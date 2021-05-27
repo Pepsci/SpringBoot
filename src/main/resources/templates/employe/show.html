@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/ajout">Inscription User</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="list">Liste User</a>
+        </li>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/ajoutEmploye">Ajout Employé</a>
+        </li>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/listemploye">Liste Employé</a>
+        </li>
+
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Fonction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" th:text="${employe.id}">1</th>
+      <td th:text="${employe.nom}"></td>
+      <td th:text="${employe.prenom}"></td>
+      <td th:text="${employe.mail}"></td>
+      <td th:text="${employe.fonction}"></td>
+    </tr>
+  </tbody>
+</table>
+<p>_____________________________________</p>
+	<div class="container">
+		<form method="post" th:action="@{/show/{id}}" th:object="${employe}">
+			  <div class="mb-3">
+			    <input type="text" class="form-control" name="id" th:field="*{id}">
+			    <label class="form-label" >Nom</label>
+			    <input type="text" class="form-control" name="nom" th:field="*{nom}">
+			    <label class="form-label">Prenom</label>
+			    <input type="text" class="form-control" name="prenom" th:field="*{prenom}">
+			    <label class="form-label">mail</label>
+			    <input type="text" class="form-control" name="mail" th:field="*{mail}">
+			    <label class="form-label">Fonction</label>
+			    <select class="form-select" aria-label="Default select example" name="Fonction" th:field="*{fonction}">
+			    <option value="directeur">Directeur</option>
+			    <option value="adjoint">Adjoint</option>
+			    <option value="employe">Employé</option>
+			    </select>
+			  </div>
+		  <button type="submit" class="btn btn-primary">Update</button>
+		</form>
+	</div>
+
+</body>
+</html>
+
+
+
