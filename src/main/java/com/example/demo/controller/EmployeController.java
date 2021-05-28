@@ -42,7 +42,7 @@ public class EmployeController<plublic> {
 	}
 	
 	@GetMapping("/show/{id}")
-	public String show(@PathVariable(value = "idEmploye") Long employeId,Model model){
+	public String show(@PathVariable(value = "id") Long employeId,Model model){
 		
 // option 1		
 //		Optional<Employe> employe = employeRepository.findById(employeId);
@@ -62,7 +62,7 @@ public class EmployeController<plublic> {
 	if(bindingResult.hasErrors()) {
 		return "employe/listemploye";
 	}
-	System.out.println(employe.getIdEmploye());
+	System.out.println(employe.getId());
 	employeRepository.save(employe);
 	return "redirect:/listemploye";
 	}

@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.User;
+import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 
 @Controller
 public class UserController {
 	
 	@Autowired UserRepository userRepository;
+	@Autowired RoleRepository roleRepository;
 	
     @GetMapping("/ajout")
-    public String Ajout(){
+    public String Ajout(Model model){
+    	
+    	model.addAttribute("roles",roleRepository.findAll());
         return "user/form";
     }
 
@@ -34,21 +36,16 @@ public class UserController {
     	//CRUD --- C
     	userRepository.save(user);
 		return "home";
-    	
     }
     
     	//CRUD --- R
     @GetMapping("/list")
     public String ListUser(Model model) {
     	
-    	
 //    	List<User> users = userRepository.findAll();
 //    	model.addAttribute("users", users);
     	
     	model.addAttribute("users", userRepository.findAll());
-
-    	
-    	
 		return "user/list";
 		
     }

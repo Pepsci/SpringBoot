@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Employe {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idEmploye;
+	private Long id;
 	private String nom;
 	private String prenom;
 	private String mail;
@@ -20,14 +20,6 @@ public class Employe {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	@Override
-	public String toString() {
-		return "Employe [idEmploye=" + idEmploye + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail
-				+ ", fonction=" + fonction + "]";
-	}
-
-
 	public Employe( String nom, String prenom, String mail, String fonction) {
 		super();
 		this.nom = nom;
@@ -36,20 +28,10 @@ public class Employe {
 		this.fonction = fonction;
 	}
 
-	public Long getIdEmploye() {
-		return idEmploye;
+	public Long getId() {
+		return id;
 	}
 
-
-	
-	public Employe(Long idEmploye, String nom, String prenom, String mail, String fonction) {
-		super();
-		this.idEmploye = idEmploye;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.mail = mail;
-		this.fonction = fonction;
-	}
 
 	public String getNom() {
 		return nom;

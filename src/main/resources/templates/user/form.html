@@ -7,26 +7,7 @@
 </head>
 <body>
     
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/ajout">Inscription User</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="list">Liste User</a>
-        </li>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/ajoutEmploye">Ajout Employé</a>
-        </li>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/listemploye">Liste Employé</a>
-        </li>
-
-    </div>
-  </div>
-</nav>
+<div th:replace="fragements/header::header"></div>
 
 
 	<div class="container">
@@ -36,6 +17,11 @@
 			    <input type="text" class="form-control" name="nom">
 			    <label class="form-label">Prenom</label>
 			    <input type="text" class="form-control" name="prenom">
+			    <label class="form-label">Rôle</label>
+			     <select multiple class="form-select" aria-label="Default select example" name="roles">
+			    <option th:each="role:${roles}" th:value="${role.id}" th:text="${role.nom}">
+			    </option>
+			    </select>
 			  </div>
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		</form>
